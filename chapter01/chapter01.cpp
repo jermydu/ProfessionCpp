@@ -42,8 +42,11 @@ int main()
 {
 	std::cout << std::format("hello world {}", 100) << std::endl;
 
+	//统一的变量初始化
 	int uninitializedInt;
-	int initializedInt{ 7 };			//统一的变量初始化
+	int initializedInt{ 7 };
+
+	/*******************************格式化*********************************/
 	cout << format("{} is a random value", uninitializedInt) << endl;
 	cout << format("{} was assigned an initial value", initializedInt) << endl;
 
@@ -55,6 +58,53 @@ int main()
 	cout << format("Max double value: {}\n", numeric_limits<double>::max());
 	cout << format("Min double value: {}\n", numeric_limits<double>::min());
 	cout << format("Lowest double value: {}\n", numeric_limits<double>::lowest());
+
+	//指定宽度
+	int i42{ 42 };
+	cout << format("|{:5}|", i42) << endl; 
+	cout << format("|{:{}}|", i42, 7) << endl; 
+
+	//格式对齐
+	cout << format("|{:7}|", i42) << endl; 
+	cout << format("|{:<7}|", i42) << endl; 
+	cout << format("|{:_>7}|", i42) << endl; 
+	cout << format("|{:_^7}|", i42) << endl; 
+
+	cout << format("|{:<5}|", i42) << endl; 
+	cout << format("|{:<+5}|", i42) << endl; 
+	cout << format("|{:< 5}|", i42) << endl; 
+	cout << format("|{:< 5}|", i42) << endl; 
+
+	//type # 
+	cout << format("|{:10b}|", i42) << endl;
+	cout << format("|{:10B}|", i42) << endl;
+	cout << format("|{:#10b}|", i42) << endl;
+	cout << format("|{:#10B}|", i42) << endl;
+	cout << format("|{:10o}|", i42) << endl; 
+	cout << format("|{:#10o}|", i42) << endl; 
+	cout << format("|{:10d}|", i42) << endl; 
+	cout << format("|{:#10d}|", i42) << endl; 
+	cout << format("|{:10x}|", i42) << endl;
+	cout << format("|{:10X}|", i42) << endl;
+	cout << format("|{:#10x}|", i42) << endl;
+	cout << format("|{:#10X}|", i42) << endl;
+
+	double f3 = 13.141592653;
+	cout << format("|{}|", f3) << endl;
+	cout << format("|{:10.5e}|", f3) << endl;
+	cout << format("|{:10.5E}|", f3) << endl;
+	cout << format("|{:10.5f}|", f3) << endl;
+	cout << format("|{:10.5F}|", f3) << endl;
+	cout << format("|{:10.5g}|", f3) << endl;
+	cout << format("|{:10.5G}|", f3) << endl;
+	cout << format("|{:10.5a}|", f3) << endl;
+	cout << format("|{:10.5A}|", f3) << endl;
+	int width{ 12 };
+	int precision{ 3 };
+	cout << format("|{2:{0}.{1}f}|", width, precision, f3) << endl;
+
+	bool bl = true;
+	cout << format("|{:s}|", bl) << endl;
 
 	/*******************************枚举类型*********************************/
 	//老式 没有范围限定
